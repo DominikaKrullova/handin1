@@ -1,15 +1,14 @@
-﻿using Domain.DTOs;
-using Domain.Models;
+using Models;
 
-namespace HttpClients.ClientInterfaces;
+namespace HttpClients_.ClientInterfaces;
+using Models.DTOs;
 
 public interface IPostService
-{
-    Task<IEnumerable<Post>> GetAsync(string? titleContains = null);
-    Task<Post> GetPostByIdAsync(int id);
-    Task<Post> CreatePostAsync(PostCreationDto dto);
+ {
+     Task CreateAsync(PostCreationDto dto);
 
-
-    Task GetPostsAsync();
-    Task GetPostAsync(int id);
-}
+     Task<ICollection<Post>> GetAsync(User? username, string title, string?body); 
+     
+     Task<Post?> GetByIdAsync(int id);
+     Task DeleteAsync(int id);
+ }
